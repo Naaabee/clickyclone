@@ -1,16 +1,23 @@
-const productContainers = [...document.querySelectorAll('.product-container')];
-const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-const preBtn = [...document.querySelectorAll('.pre-btn')];
 
-productContainers.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
+var slideImg = document.getElementById("slideImg");
 
-    nxtBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
-    })
+var images = new Array (
+    "resources/images/1.webp",
+    "resources/images/2.jpg",
+    "resources/images/3.webp",
+    "resources/images/4.webp"
+);
 
-    preBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
-    })
-})
+var len = images.length;
+var i = 0;
+
+function slider() {
+    if(i > len-1) {
+        i = 0;
+    } 
+    slideImg.src = images[i];
+    i++;
+    setTimeout('slider()',5000);
+}
+
+slider();
